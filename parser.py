@@ -53,3 +53,8 @@ class TrackingDataParser:
 
     def save_parsed_data(self, file_name):
         self.parse_data().to_csv(file_name, index=False)
+
+
+class MatchEventParser(TrackingDataParser):
+
+    pass
