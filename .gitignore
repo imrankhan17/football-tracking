@@ -1,6 +1,7 @@
 # Python files
 __pycache__/*
 *.pyc
+.pytest_cache/
 
 # Notebook files
 .ipynb_checkpoints/
@@ -12,6 +13,7 @@ __pycache__/*
 # Data
 *.csv
 *.xml
+!tracking_raw_data_sample.xml
 
 # Images
 *.png
