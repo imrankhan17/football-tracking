@@ -354,10 +354,19 @@ class EventDataParser(EventData):
         return df
 
     def oneonones(self):
-        NotImplementedError()
+        ones = None
+        for i in self.root.iter('oneonones'):
+            ones = [j.attrib for j in list(i.iter('event'))]
+
+        df = pd.DataFrame(ones)
+        df = df.rename(columns={'team': 'team_id'})
+        df['event'] = 'one_on_ones'
+
+        return df
 
 
 class EventDataSummary(EventDataParser):
+    # TODO: do a join with player and team names
 
     def __len__(self):
         return len(self.all_events())
@@ -368,7 +377,7 @@ class EventDataSummary(EventDataParser):
                   self.fouls(), self.gk_events(), self.gk_sweeps(),
                   self.headed_duels(), self.interceptions(), self.passes(),
                   self.shots(), self.tackles(), self.takeons(), self.offside(),
-                  self.setpieces()]
+                  self.setpieces(), self.oneonones()]
         events = [i for i in events if len(i) != 0]
         if len(events) > 0:
             df = pd.concat(events)
