@@ -11,6 +11,7 @@ __pycache__/*
 .idea/*
 
 # Data
+data/*
 *.csv
 *.xml
 !tracking_raw_data_sample.xml

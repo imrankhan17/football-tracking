@@ -9,14 +9,14 @@ class TrackingDataParser:
         self.path = path
         self.root = ET.parse(self.path).getroot()
 
-    def ___repr__(self):
+    def __repr__(self):
         return '{}, match no. {} @ {}'.format(
             self.competition_details()['name'],
             self.match_details()['matchNumber'],
             self.stadium_details()['name'])
 
     def __str__(self):
-        return self.___repr__()
+        return self.__repr__()
 
     def match_details(self):
         return self.root[0].attrib
