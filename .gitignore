@@ -15,6 +15,7 @@ data/*
 *.csv
 *.xml
 !tracking_raw_data_sample.xml
+!opta_raw_data_sample.xml
 
 # Images
 *.png
