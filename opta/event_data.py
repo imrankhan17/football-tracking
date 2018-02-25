@@ -366,7 +366,6 @@ class EventDataParser(EventData):
 
 
 class EventDataSummary(EventDataParser):
-    # TODO: do a join with player and team names
 
     def __len__(self):
         return len(self.all_events())
@@ -387,9 +386,15 @@ class EventDataSummary(EventDataParser):
         df['a'] = None if 'a' not in df.columns else df.a
         df['k'] = None if 'k' not in df.columns else df.k
         df = df.rename(columns={'a': 'assist', 'k': 'key_pass'})
+        df['team_name'] = df.team_id.replace(self.team_ids())
+        df['other_team_name'] = df.other_team.replace(self.team_ids())
+        player_ids = self.squads().set_index('player_id').to_dict()['name']
+        df['player_name'] = df.player_id.replace(player_ids)
+        df['other_player_name'] = df.other_player.replace(player_ids)
 
-        cols = ['event', 'mins', 'secs', 'minsec', 'player_id', 'team_id',
-                'other_player', 'other_team', 'start_x', 'start_y', 'end_x',
+        cols = ['event', 'mins', 'secs', 'minsec', 'player_id', 'player_name',
+                'team_id', 'team_name', 'other_player', 'other_player_name',
+                'other_team', 'other_team_name', 'start_x', 'start_y', 'end_x',
                 'end_y', 'gmouth_y', 'gmouth_z', 'type', 'pass_type', 'assist',
                 'key_pass', 'headed', 'swerve']
         for i in set(cols) - set(df.columns):

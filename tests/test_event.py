@@ -34,9 +34,10 @@ def test_match_events():
     assert sorted(df.columns) == ['assist', 'end_x', 'end_y', 'event',
                                   'gmouth_y', 'gmouth_z', 'headed', 'key_pass',
                                   'mins', 'minsec', 'other_player',
-                                  'other_team', 'pass_type', 'player_id',
-                                  'secs', 'start_x', 'start_y', 'swerve',
-                                  'team_id', 'type']
+                                  'other_player_name', 'other_team',
+                                  'other_team_name', 'pass_type', 'player_id',
+                                  'player_name', 'secs', 'start_x', 'start_y',
+                                  'swerve', 'team_id', 'team_name', 'type']
     assert sorted(df.event.unique()) == ['ball_out', 'blocked_event', 'card',
                                          'clearance', 'corner', 'cross',
                                          'foul', 'gk_event', 'gk_sweep',
@@ -45,6 +46,7 @@ def test_match_events():
                                          'set_piece', 'shot', 'tackle',
                                          'take_on']
     assert sorted(df.team_id.unique()) == ['58', '68']
+    assert sorted(df.team_name.unique()) == ['Lyon', 'Toulouse']
     assert sorted(df.player_id.unique()) == ['1118', '1146', '1149', '1151',
                                              '1160', '1162', '1166', '11681',
                                              '11690', '1298', '1438', '1442',
