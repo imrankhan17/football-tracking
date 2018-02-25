@@ -5,12 +5,12 @@ from opta.event_data import EventDataSummary
 
 @pytest.fixture(scope='session')
 def sample_match():
-    return EventDataSummary('tests/opta_raw_data_sample.xml')
+    return EventDataSummary('tests/opta/opta_raw_data_sample.xml')
 
 
 def test_match_attribute():
     match = sample_match()
-    assert match.path == 'tests/opta_raw_data_sample.xml'
+    assert match.path == 'tests/opta/opta_raw_data_sample.xml'
     assert str(match) == \
         'Toulouse 2 - 1 Lyon, 2014-08-16 18:00:00 @ Stadium Municipal'
 

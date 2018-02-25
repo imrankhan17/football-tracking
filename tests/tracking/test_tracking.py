@@ -6,13 +6,13 @@ from tracking.tracking_data import TrackingDataParser
 
 @pytest.fixture(scope='session')
 def sample_match():
-    return TrackingDataParser('tests/tracking_raw_data_sample.xml')
+    return TrackingDataParser('tests/tracking/tracking_raw_data_sample.xml')
 
 
 def test_class_attributes():
     match = sample_match()
 
-    assert match.path == 'tests/tracking_raw_data_sample.xml'
+    assert match.path == 'tests/tracking/tracking_raw_data_sample.xml'
     assert str(match) == 'ABC Cup 2020, match no. 12 @ ABC Stadium'
     assert match.match_details() == {'dateMatch': '2020-01-04T15:00:00',
                                      'id': '123456', 'matchNumber': '12'}
